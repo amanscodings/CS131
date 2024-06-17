@@ -1,3 +1,11 @@
 1.   mkdir a1  
 2.  OUTPUT: /bin/bash  
-    COMMANDS USED: echo $SHELL | tee A1.txt 
+    COMMANDS USED: echo $SHELL | tee 11.txt 
+  OUTPUT:  /mnt/scratch/SP24_CS131_Genya/amansu24
+    COMMAND USED: echo $HOME | tee -a a1.txt
+3)OUTPUT:  uid=1231(amansu2424) gid=1231(amansu24) groups=1231(amansu24),78(S78)
+    COMMANDS USED: id | tee -a a1.txt
+3)INTERPRETATION: My UID is 1231. I am in amansu24 and S78.
+4)
+5)There are a total of 71367 memibytes of memory in the IBM VM.
+7)
