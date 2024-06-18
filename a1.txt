@@ -1,11 +1,35 @@
 1.   mkdir a1  
+
 2.  OUTPUT: /bin/bash  
-    COMMANDS USED: echo $SHELL | tee 11.txt 
-  OUTPUT:  /mnt/scratch/SP24_CS131_Genya/amansu24
-    COMMAND USED: echo $HOME | tee -a a1.txt
-3)OUTPUT:  uid=1231(amansu2424) gid=1231(amansu24) groups=1231(amansu24),78(S78)
-    COMMANDS USED: id | tee -a a1.txt
-3)INTERPRETATION: My UID is 1231. I am in amansu24 and S78.
-4)
-5)There are a total of 71367 memibytes of memory in the IBM VM.
-7)
+    cd
+    pwd >> ~/CS131/a1/a1.txt
+
+3. id >> a1.txt
+uid=1001(aman) gid=1001(aman) groups=1001(aman)
+
+4) cd
+ls /proc | grep mem >> ~/CS131/a1/a1.txt
+
+5) 
+head /meminfo >> ~/CS131/a1/a1.txt
+
+6)
+grep -E "^[^]*, \"2019-05-12"  | head -10
+
+7) 
+ls /etc | grep os >> ~/CS131/a1/a1.txt
+head /etc/os-release >> ~/CS131/a1/a1.txt
+
+8)
+awk -F, '
+    $2 ~ /2019-05-12/ && NR > 1 {
+        sum += $17;
+        count++;
+    }
+    END {
+        print sum / count;
+    }
+' 2019-05.csv >> ~/CS131/a1/a1.txt
+
+9) awk -F, 'NR > 1 && $4 >= 3 {print $9}' 2019-05.csv | sort | uniq -c | sort -nr | head -n 10 >> a1.txt
+
