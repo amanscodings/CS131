@@ -1,0 +1,53 @@
+1)  COMMANDS USED: mkdir a1  
+    OUTPUT: /bin/bash  
+    COMMANDS USED: echo $SHELL | tee a1.txt 
+
+2)
+/mnt/downloads/amansu24
+
+3) 
+id=1273(amansu24) gid=1273(amansu24) groups=1273(amansu24)
+
+4) 
+meminfo
+
+5)
+MemTotal:       8304680 kB
+MemFree:        2930923 kB
+MemAvailable:   48294924 kB
+Buffers:         1939439 kB
+Cached:         15602880 kB
+SwapCached:            0 kB
+Active:          4864960 kB
+Inactive:       8384388 kB
+Active(anon):    2403040 kB
+Inactive(anon):  150304 kB
+
+6)
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:      16384 kB
+Hugetlb:               0 kB
+
+7)
+host.conf
+hostname
+hosts
+"Red Hat Enterprise Linux"
+OUTPUT: VERSION="8.6 (Oopta)"
+           VERSION_ID="8.6"
+
+8)
+18.5819
+
+9)
+460.04
+
+10)
+  
