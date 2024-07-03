@@ -1,1 +1,78 @@
+#!/bin/bash
 
+function usage() {
+    echo "Usage: tax"
+    echo "This codde calculates the final value including tax based on the city selected."
+    exit 1
+}
+
+if [[ $# -gt 0 ]]; then
+    usage
+fi
+
+csv_file="tax_calculations.csv"
+
+
+echo "City,Initial Value,Tax Rate,Final Value" > "$csv_file"
+
+while true; do
+    echo "Enter the initial value (or 'q' to quit): "
+    read initial_value
+
+    if [[ "$initial_value" == "q" ]]; then
+        break
+    fi
+
+    if ! [[ "$initial_value" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+        echo "Please enter a valid number."
+        continue
+    fi
+
+    while true; do
+        echo "Select a city:"
+        echo "1. San Jose"
+        echo "2. San Francisco"
+        echo "3. Richmond"
+        echo "4. Los Angeles"
+        read -p "Enter the number of your choice (1-4): " city_choice
+
+        case $city_choice in
+            1)
+                city="San Jose"
+                tax_rate=0.0925
+                break
+                ;;
+            2)
+                city="San Francisco"
+                tax_rate=0.0875
+                break
+                ;;
+            3)
+                city="Richmond"
+                tax_rate=0.0975
+                break
+                ;;
+            4)
+                city="Los Angeles"
+                tax_rate=0.0950
+                break
+                ;;
+            *)
+                echo "Please enter a valid choice (1-4)."
+                ;;
+        esac
+    done
+
+    final_value=$(echo "$initial_value * (1 + $tax_rate)" | bc -l)
+    final_value=$(printf "%.2f" $final_value)
+
+    echo "The final value including tax is: $final_value"
+
+
+    echo "$city,$initial_value,$tax_rate,$final_value" >> "$csv_file"
+
+    echo "Result added to $csv_file"
+    echo
+done
+
+echo "Thank you for using the tax calculator. Results are saved to $csv_file"
