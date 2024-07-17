@@ -1,3 +1,20 @@
+0) cat /etc/passwd
+
+1) sed -n '1p; /,1.0,/p' 2019-10.csv > vendor2.csv
+
+2) sed 's/://g; s/"//g; s/-//g' 2019-10.csv > no-separators.csv
+
+3)sed 's/[:,\"-]//g' 2019-10.csv > no-separators.csv
+head -10 no-separators.csv
+
+4) awk -F, '{ for (i=1; i<=NF; i++) if ($i ~ /^[0-9]+\.[0-9]+$/) { sub(/\..*/, "", $i) } print }' no-separators.csv > no-fractions.csv
+head -10 no-fractions.csv
+
+5) awk -F, '$18 >= 10.0 { tips[$19]++ } END { for (tip in tips) print tip, tips[tip] }' no-separators.csv > results.txt
+
+6)sort -k2,2nr results.txt | head -5 > a3.txt
+
+
 0)
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
